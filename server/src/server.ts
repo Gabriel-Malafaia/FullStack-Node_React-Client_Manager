@@ -1,6 +1,15 @@
-import express from "express";
-import "express-async-errors";
-import "reflect-metadata";
+import { app } from "./app";
+import { prismaClient } from "./database/prismaClient";
 
-const app = express()
-app.use(express.json())
+const PORT = process.env.PORT || 3000;
+
+prismaClient
+  .$connect()
+  .then(async () => {
+    console.log("Database connected!");
+
+    app.listen(PORT, () => {
+      console.log(`App is running on http://localhost:${PORT}/`);
+    });
+  })
+  .catch((err) => console.error(err));

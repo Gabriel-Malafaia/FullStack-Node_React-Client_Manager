@@ -9,9 +9,9 @@ import { usersRoutes } from "./routes/users.routes";
 const app = express();
 app.use(express.json());
 
-app.use(usersRoutes);
-app.use(sessionsRoutes);
-app.use(contactsRoutes);
+app.use("/users", usersRoutes);
+app.use("/sessions", sessionsRoutes);
+app.use("/contacts", contactsRoutes);
 
 app.use(errorHandler);
 

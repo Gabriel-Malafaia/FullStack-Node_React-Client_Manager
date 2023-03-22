@@ -13,11 +13,12 @@ datasource db {
 
 model User {
   id            String          @id @default(uuid())
-  email         String          @unique
+  email         String          @unique @db.VarChar(127)
   password      String          @db.VarChar(127)
   firstName     String          @db.VarChar(26)
   lastName      String          @db.VarChar(26)
   phone         String          @db.VarChar(11)
+  isAdmin       Boolean         @default(false)
   createdAt     DateTime        @default(now())
   updatedAt     DateTime        @updatedAt
   contacts      ContactUser[] 
