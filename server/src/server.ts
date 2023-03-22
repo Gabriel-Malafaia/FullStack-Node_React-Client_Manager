@@ -1,7 +1,9 @@
 import { app } from "./app";
-import { prismaClient } from "./database/prismaClient";
+import { PrismaClient } from "@prisma/client";
 
 const PORT = process.env.PORT || 3000;
+
+const prismaClient = new PrismaClient();
 
 prismaClient
   .$connect()

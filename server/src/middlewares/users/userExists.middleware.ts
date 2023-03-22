@@ -10,6 +10,7 @@ const userExistsMiddleware = async (
 ) => {
   const payload: IUser = req.validatedBody;
   const { email } = payload;
+  const { originalUrl: path } = req;
 
   const user = await prismaClient.user.findUnique({
     where: {
@@ -17,10 +18,15 @@ const userExistsMiddleware = async (
     },
   });
 
-  if (user) {
-    throw new AppError("User with that email is already registered.");
+  if (user && path == "/users") {
+    throw new AppError("User with that email is already registered.", 409);
   }
 
+  if (!user && path == "/sessions") {
+    throw new AppError("Email or password is invalid.", 401);
+  }
+
+  req.validatedUser = user;
   return next();
 };
 
