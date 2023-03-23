@@ -2,6 +2,7 @@ import { app } from "./app";
 import { PrismaClient } from "@prisma/client";
 
 const PORT = process.env.PORT || 3000;
+process.env.DEBUG = "prisma:*";
 
 const prismaClient = new PrismaClient();
 

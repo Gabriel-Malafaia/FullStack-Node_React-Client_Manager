@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "ts-node-dev --ignore-watch node_modules src/server.ts",
     "build": "tsc",
-    "prisma": "prisma migrate"
+    "prismax": "prisma migrate"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",

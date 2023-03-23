@@ -19,7 +19,7 @@ const contactExistsMiddleware = async (
   });
 
   if (!contact) {
-    throw new AppError("Contact not found in your list.", 404);
+    throw new AppError("Contact or client id in params is not found.", 404);
   }
 
   req.validatedUniqueContact = contact;

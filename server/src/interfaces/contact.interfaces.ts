@@ -8,8 +8,16 @@ interface IContact {
 interface IContactEdit {
   firstName?: string;
   lastName?: string;
+}
+
+interface IContactInfo {
+  email: string;
+  phone: string;
+}
+
+interface IContactEditInfo {
   email?: string;
   phone?: string;
 }
 
-export { IContact, IContactEdit };
+export { IContact, IContactEdit, IContactEditInfo, IContactInfo };

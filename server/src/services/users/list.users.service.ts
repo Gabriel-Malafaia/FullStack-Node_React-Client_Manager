@@ -1,9 +1,21 @@
 import { prismaClient } from "../../database/prismaClient";
-import { deletePass } from "../../middlewares/global/deletePassword.middleware";
 
 const listUsersService = async () => {
-  const usersDatabase = await prismaClient.user.findMany();
-  return deletePass(usersDatabase);
+  const usersDatabase = await prismaClient.user.findMany({
+    select: {
+      id: true,
+      email: true,
+      firstName: true,
+      lastName: true,
+      phone: true,
+      isAdmin: true,
+      createdAt: true,
+      updatedAt: true,
+      password: false,
+    },
+  });
+
+  return usersDatabase;
 };
 
 export { listUsersService };
