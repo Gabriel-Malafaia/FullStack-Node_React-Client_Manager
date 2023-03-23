@@ -1,3 +1,4 @@
+import { ContactUser } from "@prisma/client";
 import { IUser, IUserDatabase } from "../../interfaces/user.interfaces";
 
 declare global {
@@ -7,6 +8,7 @@ declare global {
       validatedUser: IUserDatabase | null;
       validatedAuthId: string;
       validatedUserParam: IUserDatabase
+      validatedUniqueContact: ContactUser
     }
   }
 }

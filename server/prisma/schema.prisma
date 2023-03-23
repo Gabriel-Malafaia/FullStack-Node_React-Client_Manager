@@ -21,23 +21,30 @@ model User {
   isAdmin       Boolean         @default(false)
   createdAt     DateTime        @default(now())
   updatedAt     DateTime        @updatedAt
-  contacts      ContactUser[] 
+  contacts      ContactUser[]   
 
   @@map("users")
 }
 
 model ContactUser {
   id            String          @id @default(uuid())
-  primaryEmail  String          @db.VarChar(127)
-  secondEmail   String?         @db.VarChar(127)
   firstName     String          @db.VarChar(26)
   lastName      String          @db.VarChar(26)
-  primaryPhone  String          @db.VarChar(11)
-  secondPhone   String?         @db.VarChar(11) 
   createdAt     DateTime        @default(now())
   updatedAt     DateTime        @updatedAt
-  user          User            @relation(fields: [userId], references: [id])
+  contacts      ContactInfo[]  
+  user          User            @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId        String          @map("user_id")
   
   @@map("contacts_users")
+}
+
+model ContactInfo {
+  id            String          @id @default(uuid())
+  email         String          @db.VarChar(127)
+  phone         String          @db.VarChar(11) @unique
+  client        ContactUser     @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  clientId      String          @map("client_id")
+
+  @@map("contacts_users_info")
 }
