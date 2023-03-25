@@ -4,7 +4,7 @@ const GlobalStyles = createGlobalStyle`
     :root {
         
         //Primary Palette
-        --color-primary: rgb(0, 4, 202);
+        --color-primary: #1976D2;
         --color-secondary: rgba(0, 121, 163, 1);
         --color-negative: #00ff8c;
         --color-blue-1: #2196f3;

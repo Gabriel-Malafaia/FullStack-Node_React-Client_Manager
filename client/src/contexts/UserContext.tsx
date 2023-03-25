@@ -4,7 +4,11 @@ import { createContext, useContext, useState } from "react";
 import { IChildrenNode } from "../interfaces/Global";
 import { ILoginProps } from "../interfaces/pages/login";
 import { ILoginResponse, IUserContextProvider } from "../interfaces/Provider";
-import { toastError, toastSuccess } from "../styles/components/Toastify";
+import {
+  toastError,
+  toastSuccess,
+  toastSuccessBottom,
+} from "../styles/components/Toastify";
 import { useNavigate } from "react-router-dom";
 import { IRegisterPropsFunc } from "../interfaces/pages/register";
 
@@ -23,7 +27,7 @@ const UserContextProvider = ({ children }: IChildrenNode) => {
       const request = await Api.post("/sessions", data);
       const response: ILoginResponse = request.data;
       localStorage.setItem("@UserToken", response.token);
-      toastSuccess("Bem-vindo à Contacts Manager!");
+      toastSuccessBottom("Bem-vindo à Contacts Manager!");
       navigate("/dashboard");
     } catch (err) {
       if (axios.isAxiosError(err)) {
