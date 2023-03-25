@@ -2,21 +2,19 @@ import Text from "../../styles/Typography";
 import TextField from "@mui/material/TextField";
 import LoadingButton from "@mui/lab/LoadingButton";
 import SendIcon from "@mui/icons-material/Send";
-import { useState } from "react";
+import LogoComponent from "../../components/Logo";
+import Title from "../../components/Title";
+import PasswordInput from "../../components/PasswordInput";
 import { StyledForm, StyledFormContainer, StyledRedirect } from "./style";
 import { useForm } from "react-hook-form";
 import { loginSchema } from "../../schemas";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { ILoginProps } from "../../interfaces/pages/login";
-import LogoComponent from "../../components/Logo";
-import Title from "../../components/Title";
 import { StyledTextContainer } from "../../components/Title/style";
-import PasswordInput from "../../components/PasswordInput";
+import { useHomeContext } from "../../contexts/UserContext";
 
 const LoginPage = () => {
-  const [showPassword, setShowPassword] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const handleClickShowPassword = () => setShowPassword((show) => !show);
+  const { loginUser, loading } = useHomeContext();
 
   const formOptions = { resolver: yupResolver(loginSchema) };
   const {
@@ -24,10 +22,6 @@ const LoginPage = () => {
     formState: { errors },
     handleSubmit,
   } = useForm<ILoginProps>(formOptions);
-
-  const loginUser = (data: any) => {
-    console.log(data);
-  };
 
   return (
     <StyledFormContainer>

@@ -1,32 +1,26 @@
 import LogoComponent from "../../components/Logo";
 import Title from "../../components/Title";
-import { StyledTextContainer } from "../../components/Title/style";
 import TextField from "@mui/material/TextField";
 import Text from "../../styles/Typography";
+import LoadingButton from "@mui/lab/LoadingButton";
+import SendIcon from "@mui/icons-material/Send";
+import PasswordInput from "../../components/PasswordInput";
+import StyledErrorMessage from "../../components/PasswordInput/style";
+import { StyledTextContainer } from "../../components/Title/style";
 import { StyledFormContainer, StyledRedirect } from "../login/style";
 import { StyledFormRegister } from "./style";
 import { useForm } from "react-hook-form";
-import LoadingButton from "@mui/lab/LoadingButton";
-import SendIcon from "@mui/icons-material/Send";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { registerSchema } from "../../schemas";
-import PasswordInput from "../../components/PasswordInput";
 import { FormControl, Input, InputLabel } from "@mui/material";
 import { TextMaskCustom } from "../../components/MaskedInput";
 import { useState } from "react";
-import StyledErrorMessage from "../../components/PasswordInput/style";
-
-export interface IRegisterProps {
-  email: string;
-  password: string;
-  confirmPassword: string;
-  phone: string;
-  firstName: string;
-  lastName: string;
-}
+import { IRegisterProps } from "../../interfaces/pages/register";
+import { useHomeContext } from "../../contexts/UserContext";
 
 const RegisterPage = () => {
   const [textMask, setTextMask] = useState("");
+  const { loading, registerUser } = useHomeContext();
 
   const formOptions = { resolver: yupResolver(registerSchema) };
   const {
@@ -53,10 +47,6 @@ const RegisterPage = () => {
         message: "Telefone obrigatório com o mínimo de 11 caracteres.",
       });
     }
-  };
-
-  const registerUser = (data: IRegisterProps) => {
-    console.log(data);
   };
 
   return (
@@ -131,7 +121,7 @@ const RegisterPage = () => {
           type="submit"
           fullWidth
           endIcon={<SendIcon />}
-          loading={false}
+          loading={loading}
           loadingPosition="end"
           variant={"contained"}
         >

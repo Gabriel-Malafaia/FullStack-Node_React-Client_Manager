@@ -1,3 +1,8 @@
+import StyledErrorMessage from "./style";
+import { VisibilityOff } from "@mui/icons-material";
+import { Visibility } from "@mui/icons-material";
+import { useState } from "react";
+import { IPasswordInputProps } from "../../interfaces/pages/components";
 import {
   FormControl,
   IconButton,
@@ -5,12 +10,6 @@ import {
   InputAdornment,
   InputLabel,
 } from "@mui/material";
-
-import { VisibilityOff } from "@mui/icons-material";
-import { Visibility } from "@mui/icons-material";
-import { useState } from "react";
-import StyledErrorMessage from "./style";
-import { IPasswordInputProps } from "../../interfaces/pages/components";
 
 const PasswordInput = ({
   register,

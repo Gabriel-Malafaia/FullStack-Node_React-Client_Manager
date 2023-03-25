@@ -1,6 +1,6 @@
-import { StyledLogoContainer } from "./style";
-import Logo from "../../assets/contact-logo.png";
 import Text from "../../styles/Typography";
+import Logo from "../../assets/contact-logo.png";
+import { StyledLogoContainer } from "./style";
 
 const LogoComponent = () => {
   return (

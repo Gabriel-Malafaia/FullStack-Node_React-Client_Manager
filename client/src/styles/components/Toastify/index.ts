@@ -15,7 +15,7 @@ const toastError = (text: string) => {
 const toastSuccess = (text: string) => {
   toast.success(`${text}`, {
     position: "top-right",
-    autoClose: 1000,
+    autoClose: 3000,
     hideProgressBar: false,
     closeOnClick: true,
     pauseOnHover: true,
@@ -27,7 +27,7 @@ const toastSuccess = (text: string) => {
 const toastSuccessBottom = (text: string) => {
   toast.success(`${text}`, {
     position: "bottom-right",
-    autoClose: 1000,
+    autoClose: 3000,
     hideProgressBar: false,
     closeOnClick: true,
     pauseOnHover: true,

@@ -1,4 +1,5 @@
 import { Outlet } from "react-router-dom";
+import { UserContextProvider } from "../../contexts/UserContext";
 import {
   StyledMainContainer,
   StyledMainContainerLeft,
@@ -7,12 +8,14 @@ import {
 
 const DefaultPage = () => {
   return (
-    <StyledMainContainer>
-      <StyledMainContainerLeft>
-        <Outlet />
-      </StyledMainContainerLeft>
-      <StyledMainContainerRight />
-    </StyledMainContainer>
+    <UserContextProvider>
+      <StyledMainContainer>
+        <StyledMainContainerLeft>
+          <Outlet />
+        </StyledMainContainerLeft>
+        <StyledMainContainerRight />
+      </StyledMainContainer>
+    </UserContextProvider>
   );
 };
 
