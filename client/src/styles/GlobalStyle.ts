@@ -57,8 +57,6 @@ const GlobalStyles = createGlobalStyle`
     body {
         line-height: 1;
         min-height: 100vh;
-        background-color: var(--color-grey-1);
-        color: white;
     }
 
     ol, ul, li {

@@ -1,5 +1,19 @@
+import { Outlet } from "react-router-dom";
+import {
+  StyledMainContainer,
+  StyledMainContainerLeft,
+  StyledMainContainerRight,
+} from "./style";
+
 const DefaultPage = () => {
-  return <h1>Default page</h1>;
+  return (
+    <StyledMainContainer>
+      <StyledMainContainerLeft>
+        <Outlet />
+      </StyledMainContainerLeft>
+      <StyledMainContainerRight />
+    </StyledMainContainer>
+  );
 };
 
 export default DefaultPage;
