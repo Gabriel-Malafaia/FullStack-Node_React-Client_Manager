@@ -13,10 +13,9 @@ import { useEffect, useState } from "react";
 import { registerClientContactSchema } from "../../../schemas";
 import { useDashContext } from "../../../contexts/DashContext";
 import { TextMaskCustom } from "../../MaskedInput";
-import {
-  ICreateContactDialogProps,
-  IRegisterClientContactProps,
-} from "../../../interfaces/pages/dashboard";
+import { IRegisterClientContactProps } from "../../../interfaces/pages/dashboard";
+
+// Dialog de criação de um contato do cliente.
 
 const CreateContactDialog = () => {
   const [textMask, setTextMask] = useState("");
@@ -58,7 +57,7 @@ const CreateContactDialog = () => {
 
   useEffect(() => {
     reset();
-    setTextMask('(00) 00000-0000')
+    setTextMask("(00) 00000-0000");
   }, [actualDialog]);
 
   return (

@@ -1,3 +1,5 @@
+// Interfaces dos estilos
+
 export type ITag =
   | "h1"
   | "h2"

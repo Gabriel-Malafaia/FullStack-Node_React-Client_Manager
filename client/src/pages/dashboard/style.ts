@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 const StyledDashContainer = styled.div`
+  animation: fadeIn; 
+  animation-duration: 0.8s; 
 `;
 
 const StyledDashHeaderIntern = styled.div`
@@ -39,7 +41,7 @@ const StyledDashHeaderIntern = styled.div`
     gap: 0.5rem;
 
     svg {
-      font-size: 18px;
+      font-size: 28px;
       color: white;
     }
   }

@@ -4,13 +4,15 @@ import { createContext, useContext, useState } from "react";
 import { IChildrenNode } from "../interfaces/Global";
 import { ILoginProps } from "../interfaces/pages/login";
 import { ILoginResponse, IUserContextProvider } from "../interfaces/Provider";
+import { useNavigate } from "react-router-dom";
+import { IRegisterPropsFunc } from "../interfaces/pages/register";
 import {
   toastError,
   toastSuccess,
   toastSuccessBottom,
 } from "../styles/components/Toastify";
-import { useNavigate } from "react-router-dom";
-import { IRegisterPropsFunc } from "../interfaces/pages/register";
+
+// Contexto da homepage
 
 const userContext = createContext<IUserContextProvider>(
   {} as IUserContextProvider

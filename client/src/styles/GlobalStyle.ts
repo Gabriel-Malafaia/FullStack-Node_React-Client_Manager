@@ -1,5 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 
+// Estilos Globais da aplicação.
+
 const GlobalStyles = createGlobalStyle`
     :root {
         
@@ -57,7 +59,6 @@ const GlobalStyles = createGlobalStyle`
     body {
         line-height: 1;
         min-height: 100vh;
-        background-color: #121212;
     }
 
     ol, ul, li {

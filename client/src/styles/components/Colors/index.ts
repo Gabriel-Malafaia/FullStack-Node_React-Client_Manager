@@ -1,5 +1,7 @@
 import { IColor } from "../../../interfaces/Styles"; 
 
+// Cores Personalizadas para a aplicação
+
 const setColors = (color: IColor) => {
   switch (color) {
     case "primary":

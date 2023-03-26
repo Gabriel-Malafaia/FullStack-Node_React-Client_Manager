@@ -11,6 +11,8 @@ import {
   InputLabel,
 } from "@mui/material";
 
+// Componente de input do tipo password (no qual é possivel revelar a senha e reverter também).
+
 const PasswordInput = ({
   register,
   inputLabel,

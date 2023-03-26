@@ -6,7 +6,6 @@ const StyledTableContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: calc(100vh - 5.1rem);
   max-width: 1400px;
   margin: 0 auto;
 
@@ -22,4 +21,18 @@ const StyledAddCircle = styled(AddCircleIcon)`
   cursor: pointer;
 `;
 
-export { StyledTableContainer, StyledAddCircle };
+const StyledIlustration = styled.div`
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  top: 4rem;
+
+  img {
+    width: 35%;
+  }
+`;
+
+export { StyledTableContainer, StyledAddCircle, StyledIlustration };

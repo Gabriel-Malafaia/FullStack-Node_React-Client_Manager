@@ -8,7 +8,7 @@ import PasswordInput from "../../components/PasswordInput";
 import StyledErrorMessage from "../../components/PasswordInput/style";
 import { StyledTextContainer } from "../../components/Title/style";
 import { StyledFormContainer, StyledRedirect } from "../login/style";
-import { StyledFormRegister } from "./style";
+import { StyledFormContainerRegister, StyledFormRegister } from "./style";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { registerSchema } from "../../schemas";
@@ -50,7 +50,7 @@ const RegisterPage = () => {
   };
 
   return (
-    <StyledFormContainer>
+    <StyledFormContainerRegister>
       <LogoComponent />
       <Title
         title="Cadastre-se"
@@ -133,7 +133,7 @@ const RegisterPage = () => {
           Já tem uma conta? <StyledRedirect to={"/"}>Entrar</StyledRedirect>
         </Text>
       </StyledTextContainer>
-    </StyledFormContainer>
+    </StyledFormContainerRegister>
   );
 };
 

@@ -1,11 +1,15 @@
+import { ILoginProps } from "./pages/login";
+import { IRegisterPropsFunc } from "./pages/register";
 import {
   IClientProps,
+  IEditClientProps,
+  IEditProfileProps,
   IRegisterClientContactProps,
   IUserLogged,
   IUserLoggedClient,
 } from "./pages/dashboard";
-import { ILoginProps } from "./pages/login";
-import { IRegisterPropsFunc } from "./pages/register";
+
+// Interfaces dos providers
 
 export interface IUserContextProvider {
   loading: boolean;
@@ -42,6 +46,11 @@ export interface IDashContextProvider {
   >;
   actualDialog: string;
   setActualDialog: React.Dispatch<React.SetStateAction<string>>;
+  editClient(data: IEditClientProps): Promise<void>;
+  deleteClient(): Promise<void>;
+  editProfile(data: IEditProfileProps): Promise<void>;
+  loading: boolean;
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export interface ILoginResponse {

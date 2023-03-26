@@ -1,3 +1,5 @@
+// Interfaces principais da página dashboard
+
 export interface IClientProps {
   firstName: string;
   lastName: string;
@@ -71,4 +73,15 @@ export interface IEditContactDialogProps {
 export interface IEditClientContactProps {
   phone?: string;
   email?: string;
+}
+
+export interface IEditClientProps {
+  firstName: string;
+  lastName: string;
+}
+
+export interface IEditProfileProps {
+  email: string;
+  phone: string;
+  password?: string;
 }

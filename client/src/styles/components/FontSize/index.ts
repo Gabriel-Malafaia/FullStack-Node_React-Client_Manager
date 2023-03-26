@@ -1,6 +1,8 @@
 import { css } from "styled-components";
 import { IFontSize } from "../../../interfaces/Styles";
 
+// Fontes personalizadas para tag de texto
+
 const setFontSize = (size: IFontSize) => {
   switch (size) {
     case "title1":

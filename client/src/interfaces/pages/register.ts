@@ -1,3 +1,5 @@
+// Interfaces da página de registro
+
 export interface IRegisterProps {
   email: string;
   password: string;

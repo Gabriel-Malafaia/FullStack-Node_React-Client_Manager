@@ -2,6 +2,8 @@ import { IMaskInput } from "react-imask";
 import { forwardRef } from "react";
 import { TextMaskCustomProps } from "../../interfaces/pages/components";
 
+// Componente de mascara, inserido nos campos de telefone da aplicação, no formato (00) 00000-0000.
+
 export const TextMaskCustom = forwardRef<HTMLElement, TextMaskCustomProps>(
   function TextMaskCustom(props, ref) {
     const { onChange, ...other } = props;

@@ -1,5 +1,7 @@
 import { IClientContacts } from "../interfaces/pages/dashboard";
 
+// Funções de utilidades globais
+
 const formatDate = (date: string) => {
   const dateObject = new Date(date);
   const formattedDate = `${dateObject.getDate()}/${

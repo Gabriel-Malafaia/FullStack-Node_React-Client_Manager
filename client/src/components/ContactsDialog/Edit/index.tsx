@@ -9,14 +9,12 @@ import StyledErrorMessage from "../../PasswordInput/style";
 import { FormControl, Input, InputLabel } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useState } from "react";
 import { registerClientContactSchema } from "../../../schemas";
 import { useDashContext } from "../../../contexts/DashContext";
 import { TextMaskCustom } from "../../MaskedInput";
-import {
-  IEditContactDialogProps,
-  IRegisterClientContactProps,
-} from "../../../interfaces/pages/dashboard";
+import { IRegisterClientContactProps } from "../../../interfaces/pages/dashboard";
+
+// Dialog de edição de um contato do cliente.
 
 const EditContactDialog = () => {
   const {

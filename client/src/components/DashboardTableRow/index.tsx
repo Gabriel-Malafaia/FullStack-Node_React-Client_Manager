@@ -12,15 +12,13 @@ import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import AddIcCallIcon from "@mui/icons-material/AddIcCall";
-import { useState } from "react";
-import { createData, formatPhoneNumber } from "../../service/services";
-import ConfirmDialog from "../ContactsDialog/ConfirmDialog";
-import CreateContactDialog from "../ContactsDialog/Create";
-import EditContactDialog from "../ContactsDialog/Edit";
-import { useDashContext } from "../../contexts/DashContext";
-import { IRegisterClientContactProps } from "../../interfaces/pages/dashboard";
 import Text from "../../styles/Typography";
 import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
+import { useState } from "react";
+import { createData, formatPhoneNumber } from "../../service/services";
+import { useDashContext } from "../../contexts/DashContext";
+
+// Estrutura de cada linha da tabela proposta na página.
 
 interface IRowProps {
   row: ReturnType<typeof createData>;
@@ -30,6 +28,45 @@ interface IRowProps {
 const Row = ({ row, setDialog }: IRowProps) => {
   const [open, setOpen] = useState(false);
   const { actualContact, setActualContact } = useDashContext();
+
+  const handleManageClient = () => {
+    setDialog("manageClient");
+    setActualContact({
+      ...actualContact,
+      clientId: row.id,
+      clientName: row.name,
+    });
+  };
+
+  const handleCreateClick = () => {
+    setDialog("createContact");
+    setActualContact({
+      ...actualContact,
+      clientId: row.id,
+      clientName: row.name,
+    });
+  };
+
+  const handleDeleteClick = (contactId: string) => {
+    setActualContact({
+      ...actualContact,
+      contactId,
+    });
+
+    setDialog("deleteContact");
+  };
+
+  const handleEditClick = (contactId: string, email: string, phone: string) => {
+    setActualContact({
+      ...actualContact,
+      contactId,
+      clientName: row.name,
+      clientEmail: email,
+      clientPhone: phone,
+    });
+
+    setDialog("editContact");
+  };
 
   return (
     <>
@@ -54,7 +91,10 @@ const Row = ({ row, setDialog }: IRowProps) => {
           </Text>
         </TableCell>
         <TableCell align="right">
-          <ManageAccountsIcon sx={{ color: "#1976d2", cursor: "pointer" }} />
+          <ManageAccountsIcon
+            onClick={handleManageClient}
+            sx={{ color: "#1976d2", cursor: "pointer" }}
+          />
         </TableCell>
       </TableRow>
       <TableRow>
@@ -62,14 +102,7 @@ const Row = ({ row, setDialog }: IRowProps) => {
           <Collapse in={open} timeout="auto" unmountOnExit>
             <Box sx={{ margin: 1, position: "relative" }}>
               <AddIcCallIcon
-                onClick={() => {
-                  setDialog("createContact");
-                  setActualContact({
-                    ...actualContact,
-                    clientId: row.id,
-                    clientName: row.name,
-                  });
-                }}
+                onClick={handleCreateClick}
                 sx={{
                   position: "absolute",
                   top: 0,
@@ -100,26 +133,11 @@ const Row = ({ row, setDialog }: IRowProps) => {
                       <TableCell align="right">
                         <EditIcon
                           sx={{ color: "#1976d2", cursor: "pointer" }}
-                          onClick={() => {
-                            setActualContact({
-                              ...actualContact,
-                              contactId: id,
-                              clientName: row.name,
-                              clientEmail: email,
-                              clientPhone: phone,
-                            });
-                            setDialog("editContact");
-                          }}
+                          onClick={() => handleEditClick(id, email, phone)}
                         />
                         <DeleteIcon
                           sx={{ color: "#1976d2", cursor: "pointer" }}
-                          onClick={() => {
-                            setActualContact({
-                              ...actualContact,
-                              contactId: id,
-                            });
-                            setDialog("deleteContact");
-                          }}
+                          onClick={() => handleDeleteClick(id)}
                         />
                       </TableCell>
                     </TableRow>

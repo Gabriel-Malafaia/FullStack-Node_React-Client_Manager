@@ -4,8 +4,9 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
-import { useDashContext } from "../../../contexts/DashContext";
 import { IConfirmDialog } from "../../../interfaces/pages/dashboard";
+
+// Dialog de confirmação.
 
 export default function ConfirmDialog({
   title,

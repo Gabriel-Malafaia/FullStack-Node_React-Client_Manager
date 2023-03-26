@@ -6,6 +6,8 @@ import {
   StyledMainContainerRight,
 } from "./style";
 
+// Componente default da home page (container e logo)
+
 const DefaultPage = () => {
   return (
     <UserContextProvider>

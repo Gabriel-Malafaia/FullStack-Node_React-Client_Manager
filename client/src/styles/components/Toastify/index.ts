@@ -1,5 +1,7 @@
 import { toast } from "react-toastify";
 
+// Toastify de feedback
+
 const toastError = (text: string) => {
   toast.error(`${text}`, {
     position: "top-right",

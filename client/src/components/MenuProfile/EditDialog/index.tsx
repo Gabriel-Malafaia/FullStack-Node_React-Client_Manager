@@ -5,24 +5,23 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
-import StyledErrorMessage from "../PasswordInput/style";
-import { useDashContext } from "../../contexts/DashContext";
+import StyledErrorMessage from "../../PasswordInput/style";
+import { useDashContext } from "../../../contexts/DashContext";
 import { FormControl, Input, InputLabel } from "@mui/material";
-import { TextMaskCustom } from "../MaskedInput";
+import { TextMaskCustom } from "../../MaskedInput";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
-import { registerClientSchema } from "../../schemas";
-import { IClientProps } from "../../interfaces/pages/dashboard";
+import { editProfileSchema } from "../../../schemas";
+import PasswordInput from "../../PasswordInput";
+import { IEditProfileProps } from "../../../interfaces/pages/dashboard";
 
-// Dialog de criação de um cliente.
+const EditDialogProfile = () => {
+  const { actualDialog, setActualDialog, user, editProfile } = useDashContext();
+  const { email, phone } = user;
+  const [textMask, setTextMask] = useState(phone);
 
-const FormDialog = () => {
-  const [textMask, setTextMask] = useState("");
-  const { openDialog, setOpenDialog } = useDashContext();
-  const { registerClient } = useDashContext();
-
-  const formOptions = { resolver: yupResolver(registerClientSchema) };
+  const formOptions = { resolver: yupResolver(editProfileSchema) };
   const {
     register,
     formState: { errors },
@@ -30,7 +29,7 @@ const FormDialog = () => {
     setError,
     setValue,
     handleSubmit,
-  } = useForm<IClientProps>(formOptions);
+  } = useForm<IEditProfileProps>(formOptions);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value.replace(/\D/g, "");
@@ -50,37 +49,20 @@ const FormDialog = () => {
   };
 
   return (
-    <Dialog open={openDialog} onClose={() => setOpenDialog(false)}>
-      <form onSubmit={handleSubmit(registerClient)}>
-        <DialogTitle>Cadastrar Cliente</DialogTitle>
+    <Dialog
+      open={actualDialog == "editProfile"}
+      onClose={() => setActualDialog("")}
+    >
+      <form onSubmit={handleSubmit(editProfile)}>
+        <DialogTitle>Informações do seu perfil.</DialogTitle>
         <DialogContent>
           <DialogContentText sx={{ marginBottom: "1rem" }}>
-            Para cadastrar um novo cliente, basta preencher os campos.
+            Basta mudar algum campo para alterar seus dados, se não deseja mudar
+            o campo "senha", basta não alterar.
           </DialogContentText>
 
           <TextField
-            {...register("firstName")}
-            error={!!errors.firstName}
-            helperText={errors.firstName?.message}
-            autoFocus
-            margin="dense"
-            label="Nome"
-            fullWidth
-            variant="standard"
-          />
-
-          <TextField
-            {...register("lastName")}
-            error={!!errors.lastName}
-            helperText={errors.lastName?.message}
-            autoFocus
-            margin="dense"
-            label="Sobrenome"
-            fullWidth
-            variant="standard"
-          />
-
-          <TextField
+            defaultValue={email}
             {...register("email")}
             error={!!errors.email}
             helperText={errors.email?.message}
@@ -111,14 +93,20 @@ const FormDialog = () => {
               <StyledErrorMessage>{errors?.phone?.message}</StyledErrorMessage>
             )}
           </FormControl>
+
+          <PasswordInput
+            error={errors.password}
+            inputLabel={"Senha"}
+            register={{ ...register("password") }}
+          />
         </DialogContent>
         <DialogActions>
-          <Button onClick={() => setOpenDialog(false)}>Cancelar</Button>
-          <Button type="submit">Cadastrar</Button>
+          <Button onClick={() => setActualDialog("")}>Cancelar</Button>
+          <Button type="submit">Salvar alterações</Button>
         </DialogActions>
       </form>
     </Dialog>
   );
 };
 
-export default FormDialog;
+export default EditDialogProfile;
