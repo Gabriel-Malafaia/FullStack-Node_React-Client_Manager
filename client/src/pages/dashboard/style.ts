@@ -1,5 +1,8 @@
 import styled from "styled-components";
 
+const StyledDashContainer = styled.div`
+`;
+
 const StyledDashHeaderIntern = styled.div`
   width: 100%;
   max-width: 1400px;
@@ -49,4 +52,5 @@ const StyledDashHeader = styled.header`
   border-bottom: 2px solid grey;
   background-color: var(--color-primary);
 `;
-export { StyledDashHeader, StyledDashHeaderIntern };
+
+export { StyledDashHeader, StyledDashHeaderIntern, StyledDashContainer };

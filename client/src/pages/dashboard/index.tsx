@@ -1,15 +1,19 @@
-import { Button } from "@mui/material";
-import { Link, useNavigate } from "react-router-dom";
 import Logo from "../../assets/contact-logo.png";
+import LogoutIcon from "@mui/icons-material/Logout";
+import CollapsibleTable from "../../components/DashboardTable";
+import { useNavigate } from "react-router-dom";
 import { useDashContext } from "../../contexts/DashContext";
 import Text from "../../styles/Typography";
-import { StyledDashHeader, StyledDashHeaderIntern } from "./style";
-import LogoutIcon from "@mui/icons-material/Logout";
+import {
+  StyledDashContainer,
+  StyledDashHeader,
+  StyledDashHeaderIntern,
+} from "./style";
 
 const DashboardPage = () => {
   const { user } = useDashContext();
-  const navigate = useNavigate();
   const { firstName, lastName } = user;
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     localStorage.clear();
@@ -17,7 +21,7 @@ const DashboardPage = () => {
   };
 
   return (
-    <>
+    <StyledDashContainer>
       <StyledDashHeader>
         <StyledDashHeaderIntern>
           <div>
@@ -38,7 +42,8 @@ const DashboardPage = () => {
           </button>
         </StyledDashHeaderIntern>
       </StyledDashHeader>
-    </>
+      <CollapsibleTable />
+    </StyledDashContainer>
   );
 };
 
