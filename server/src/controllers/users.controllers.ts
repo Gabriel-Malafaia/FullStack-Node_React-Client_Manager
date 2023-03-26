@@ -18,7 +18,7 @@ const listUsersController = async (req: Request, res: Response) => {
 };
 
 const listUniqueUserController = async (req: Request, res: Response) => {
-  const { id } = req.params;
+  const id = req.validatedAuthId;
   const data = await listUniqueUserService(id);
   return res.status(200).json(data);
 };

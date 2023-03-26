@@ -1,4 +1,5 @@
 import { prismaClient } from "../../database/prismaClient";
+import { AppError } from "../../errors";
 
 const listUniqueUserService = async (id: string) => {
   const user = await prismaClient.user.findUnique({
@@ -13,8 +14,13 @@ const listUniqueUserService = async (id: string) => {
       createdAt: true,
       updatedAt: true,
       password: false,
+      contacts: true
     },
   });
+
+  if(!user) {
+    throw new AppError('User with this token authorization not found.')
+  }
 
   return user;
 };

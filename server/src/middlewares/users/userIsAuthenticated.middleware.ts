@@ -24,6 +24,7 @@ const userIsAuthenticatedMiddleware = (
   const { id } = decode(token) as IJwtPayload;
 
   req.validatedAuthId = id;
+  
   return next();
 };
 

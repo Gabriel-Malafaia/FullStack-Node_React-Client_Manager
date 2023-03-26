@@ -31,10 +31,8 @@ usersRoutes.get(
 );
 
 usersRoutes.get(
-  "/:id",
+  "/get",
   userIsAuthenticatedMiddleware,
-  userIdExistsMiddleware,
-  userIsOwnerMiddleware,
   listUniqueUserController
 );
 

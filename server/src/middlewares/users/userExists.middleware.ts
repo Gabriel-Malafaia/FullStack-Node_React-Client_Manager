@@ -11,7 +11,7 @@ const userExistsMiddleware = async (
   const payload: IUser = req.validatedBody;
   const { email } = payload;
   const { originalUrl: path } = req;
-
+  
   const user = await prismaClient.user.findUnique({
     where: {
       email,
