@@ -4,9 +4,9 @@ import cors from "cors";
 import "express-async-errors";
 import "reflect-metadata";
 import { errorHandler } from "./errors";
-import { contactsRoutes } from "./routes/contacts.routes";
-import { sessionsRoutes } from "./routes/sessions.routes";
-import { usersRoutes } from "./routes/users.routes";
+import contactsRoutes from "./routes/contacts.routes";
+import usersRoutes from "./routes/users.routes";
+import sessionsRoutes from "./routes/sessions.routes";
 
 const app = express();
 app.use(express.json());
@@ -37,5 +37,3 @@ prismaClient
     });
   })
   .catch((err) => console.error(err));
-
-export { app };

@@ -53,4 +53,4 @@ usersRoutes.delete(
   deleteUserController
 );
 
-export { usersRoutes };
+export default usersRoutes
