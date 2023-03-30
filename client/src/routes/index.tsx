@@ -14,6 +14,7 @@ const RoutesApp = () => {
       <Route path="/" element={<DefaultPage />}>
         <Route path="/" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
+        <Route path="*" element={<LoginPage />} />
       </Route>
       <Route
         path="/dashboard"

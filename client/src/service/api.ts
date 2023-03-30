@@ -3,7 +3,7 @@ import axios from "axios";
 // Instância do axios, para trabalhar com a minha api
 
 const Api = axios.create({
-  baseURL: "http://localhost:3000",
+  baseURL: "https://full-stack-node-react-client-manager.vercel.app",
   timeout: 5000,
 });
 
