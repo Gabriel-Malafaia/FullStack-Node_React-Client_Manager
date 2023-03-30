@@ -83,4 +83,4 @@ contactsRoutes.delete(
   deleteContactInfoController
 );
 
-export default contactsRoutes
+export { contactsRoutes };

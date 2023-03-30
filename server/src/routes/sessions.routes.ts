@@ -13,4 +13,4 @@ sessionsRoutes.post(
   createSessionController
 );
 
-export default sessionsRoutes
+export { sessionsRoutes };
