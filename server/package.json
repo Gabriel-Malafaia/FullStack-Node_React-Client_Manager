@@ -7,7 +7,7 @@
     "dev": "ts-node-dev --ignore-watch node_modules src/server.ts",
     "build": "tsc",
     "prismax": "prisma migrate",
-    "vercel-build": "yarn prisma migrate deploy"
+    "vercel-build": "npx prisma migrate deploy"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
