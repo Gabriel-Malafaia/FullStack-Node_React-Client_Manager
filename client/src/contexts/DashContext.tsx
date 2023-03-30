@@ -45,7 +45,6 @@ const DashContextProvider = ({ children }: IChildrenNode) => {
       await Api.post("/contacts", data);
       toastSuccess("Cliente cadastrado!");
       setUpdateUser(!updateUser);
-      setOpenDialog(false);
     } catch (err) {
       if (axios.isAxiosError(err)) {
         const error = err.response?.data;
@@ -65,7 +64,6 @@ const DashContextProvider = ({ children }: IChildrenNode) => {
       await Api.post(`/contacts/info/${clientId}`, data);
       toastSuccess("Contato cadastrado!");
       setUpdateUser(!updateUser);
-      setActualDialog("");
     } catch (err) {
       if (axios.isAxiosError(err)) {
         const error = err.response?.data;
@@ -84,7 +82,6 @@ const DashContextProvider = ({ children }: IChildrenNode) => {
       await Api.patch(`/contacts/info/${contactId}`, data);
       toastSuccess("Contato editado!");
       setUpdateUser(!updateUser);
-      setActualDialog("");
     } catch (err) {
       if (axios.isAxiosError(err)) {
         const error = err.response?.data;
@@ -92,8 +89,6 @@ const DashContextProvider = ({ children }: IChildrenNode) => {
       }
 
       setLoading(false);
-    } finally {
-      setActualDialog("");
     }
   }
 
@@ -105,7 +100,6 @@ const DashContextProvider = ({ children }: IChildrenNode) => {
       await Api.delete(`/contacts/info/${contactId}`);
       toastSuccess("Contato deletado!");
       setUpdateUser(!updateUser);
-      setActualDialog("");
     } catch (err) {
       if (axios.isAxiosError(err)) {
         const error = err.response?.data;
@@ -122,7 +116,6 @@ const DashContextProvider = ({ children }: IChildrenNode) => {
       await Api.patch(`/contacts/${clientId}`, data);
       toastSuccess("Contato editado!");
       setUpdateUser(!updateUser);
-      setActualDialog("");
     } catch (err) {
       if (axios.isAxiosError(err)) {
         const error = err.response?.data;
@@ -141,7 +134,6 @@ const DashContextProvider = ({ children }: IChildrenNode) => {
       await Api.delete(`/contacts/${clientId}`);
       toastSuccess("Cliente deletado!");
       setUpdateUser(!updateUser);
-      setActualDialog("");
     } catch (err) {
       if (axios.isAxiosError(err)) {
         const error = err.response?.data;
@@ -164,7 +156,6 @@ const DashContextProvider = ({ children }: IChildrenNode) => {
       await Api.patch(`/users/${id}`, data);
       toastSuccess("Informações salvas!");
       setUpdateUser(!updateUser);
-      setActualDialog("");
     } catch (err) {
       if (axios.isAxiosError(err)) {
         const error = err.response?.data;
@@ -194,6 +185,8 @@ const DashContextProvider = ({ children }: IChildrenNode) => {
         navigate("/");
       } finally {
         setLoading(false);
+        setActualDialog("");
+        setOpenDialog(false);
       }
     };
 

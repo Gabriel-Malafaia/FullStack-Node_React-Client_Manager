@@ -9,7 +9,7 @@ const Loading = () => {
   return (
     <Backdrop
       className="filterBackdrop"
-      sx={{ color: "var(--color-primary)", zIndex: 999999 }}
+      sx={{ color: "var(--color-primary)", zIndex: 5000 }}
       open={loading}
     >
       <CircularProgress color="inherit" />
