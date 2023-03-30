@@ -16,24 +16,9 @@ app.use("/users", usersRoutes);
 app.use("/sessions", sessionsRoutes);
 app.use("/contacts", contactsRoutes);
 
-app.get("/", async (request: Request, response: Response) => {
-  const users = await prismaClient.user.findMany();
-
-  return response.json(users);
-});
-
 app.use(errorHandler);
 
 const PORT = process.env.PORT || 3000;
 process.env.DEBUG = "prisma:*";
 
-prismaClient
-  .$connect()
-  .then(async () => {
-    console.log("Database connected!");
-
-    app.listen(PORT, () => {
-      console.log(`App is running on http://localhost:${PORT}/`);
-    });
-  })
-  .catch((err) => console.error(err));
+app.listen(PORT, () => console.log(`Server is  running on port ${PORT}`));
